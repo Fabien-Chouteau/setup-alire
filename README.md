@@ -8,12 +8,12 @@ Version v2 adds caching to speed up deployment, particularly on Windows.
 
 To use the latest stable release of the Alire project, add this line to your workflow steps:
 ```yaml
-    - uses: alire-project/setup-alire@v3
+    - uses: alire-project/setup-alire@v4
 ```
 
 To use a precompiled nightly build of the development version, use the following:
 ```yaml
-    - uses: alire-project/setup-alire@v3
+    - uses: alire-project/setup-alire@v4
       with:
         version: "nightly"
 ```
@@ -21,7 +21,7 @@ To use a precompiled nightly build of the development version, use the following
 To use a development version compiled from sources (if you known what
 you are doing), use the following:
 ```yaml
-    - uses: alire-project/setup-alire@v3
+    - uses: alire-project/setup-alire@v4
       with:
         branch: "master" # or the branch you want to use
 ```
@@ -37,11 +37,12 @@ More generally, these options are available for the action:
 ```yaml
 inputs:
   version:
-    description: Use this argument to install a stable release. Use a version number without v prefix, e.g., 1.0.1, 1.1.0. This argument will be ignored if a branch argument is supplied. Defaults to the latest stable release.
+    description: Use this argument to install a stable or nightly release. Use a version number without v prefix, e.g., 1.0.1, 1.1.0, or 'nightly'. This argument will be ignored if a branch argument is supplied. Defaults to the latest stable release.
     required: false
-    default: '2.0.0'
+    default: '2.0.2'
+    # Also to be updated in test-cache-yml
   branch:
-    description: Use this argument to install a development branch (e.g., master). Using this option will require a preexisting compiler in the workflow environment.
+    description: Use this argument to install a development branch (e.g., master).
     required: false
     default: ''
   toolchain:
